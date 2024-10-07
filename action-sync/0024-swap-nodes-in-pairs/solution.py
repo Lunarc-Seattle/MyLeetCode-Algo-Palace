@@ -11,8 +11,8 @@ class Solution:
         cur = res
 
         while head and head.next:
-            nxt = head.next 
-            temp = nxt.next 
+            nxt = head.next
+            temp = nxt.next
 
             cur.next = nxt
             nxt.next = head
@@ -20,7 +20,7 @@ class Solution:
 
             cur = head
             head = head.next
-
+        
         return res.next
 
 
