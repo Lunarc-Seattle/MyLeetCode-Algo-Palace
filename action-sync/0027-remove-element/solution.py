@@ -4,13 +4,8 @@ class Solution:
             return 0
         res = 0
         for i in range(len(nums)):
-            if nums[i]!=val:
+            if nums[i] !=val:
                 nums[res] = nums[i]
                 res +=1
         return res
-        
-                    
-
-
-        
         
