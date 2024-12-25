@@ -1,0 +1,24 @@
+class Solution:
+    def countAndSay(self, n: int) -> str:
+        if n == 1:
+            return "1"
+
+        
+        previous = self.countAndSay(n-1)
+        res = []
+        count = 1
+
+        for i in range(1,len(previous)):
+            if previous[i] == previous[i-1]:
+                count += 1
+            else:
+                res.append(str(count))
+                res.append(previous[i-1])
+                count = 1
+
+        res.append(str(count))
+        res.append(previous[-1])
+            
+        return ''.join(res)
+
+        
