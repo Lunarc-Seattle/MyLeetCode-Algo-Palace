@@ -1,15 +1,9 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        list1 = [0]*26
-        list2 = [0]*26
-
-        for chara in s:
-            list1[ord(chara)-ord('a')] += 1
-        for chara in t:
-            list2[ord(chara)-ord('a')] += 1
-        return list1 == list2
-        
-            
-
-
-        
+        if len(s) != len(t):
+            return False
+        ansS, ansT = {}, {}
+        for i in range(len(s)):
+            ansS[s[i]] = 1+ ansS.get(s[i],0)
+            ansT[t[i]] = 1+ ansT.get(t[i],0)
+        return ansS == ansT
