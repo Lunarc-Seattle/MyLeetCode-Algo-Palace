@@ -1,12 +1,14 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         n = len(nums)
-        map = {}
+        
+        res = {}
 
         for i in range(n):
-            com = target - nums[i]
-            if com in map:
-                return [map[com],i]
-            map[nums[i]] = i
+            dif = target - nums[i]
+            if dif in res:
+                return [i, res[dif]]
+            res [nums[i]] = i
         return []
-
+        
+                    
