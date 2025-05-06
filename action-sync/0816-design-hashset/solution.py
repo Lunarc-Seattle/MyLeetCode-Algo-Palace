@@ -6,7 +6,7 @@ class MyHashSet:
 
     def __init__(self):
         self.set = []
-        for i in range( 10**4):
+        for i in range( 10**4 ):
             self.set.append(ListNode(0))
         
         
