@@ -1,23 +1,23 @@
 class MyHashSet:
 
     def __init__(self):
-        self.size = 1009  # 用一个质数，减少冲突
+        self.size = 1000
         self.buckets = [[] for _ in range(self.size)]
 
-    def _hash(self, key):
-        return key % self.size  # 简单的哈希函数
+    def _hash(self, key: int) -> int:
+        return key % self.size
 
     def add(self, key: int) -> None:
-        bucket = self.buckets[self._hash(key)]
-        if key not in bucket:  # 避免重复添加
-            bucket.append(key)
+        idx = self._hash(key)
+        if key not in self.buckets[idx]:
+            self.buckets[idx].append(key)
 
     def remove(self, key: int) -> None:
-        bucket = self.buckets[self._hash(key)]
-        if key in bucket:
-            bucket.remove(key)
+        idx = self._hash(key)
+        if key in self.buckets[idx]:
+            self.buckets[idx].remove(key)
 
     def contains(self, key: int) -> bool:
-        bucket = self.buckets[self._hash(key)]
-        return key in bucket
+        idx = self._hash(key)
+        return key in self.buckets[idx]
 
