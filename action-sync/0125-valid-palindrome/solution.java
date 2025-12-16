@@ -1,30 +1,15 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        int left = 0;
-        int right = s.length() - 1;
-
-        while (left < right) {
-            // 跳过左边非字母数字
-            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
-                left++;
+        StringBuilder filteredChars = new StringBuilder();
+        for ( int i = 0; i <s.length();i++){
+            char c = s.charAt(i);
+            if (Character.isLetterOrDigit(c)){
+                filteredChars.append(Character.toLowerCase(c));
             }
-
-            // 跳过右边非字母数字
-            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
-                right--;
-            }
-
-            // 忽略大小写比较
-            if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
-                return false;
-            }
-
-            left++;
-            right--;
         }
-
-        return true;
+        String normalStr = filteredChars.toString();
+        String reversedStr = new StringBuilder(normalStr).reverse().toString();
+        return normalStr.equals(reversedStr);
+        
     }
 }
-
-
