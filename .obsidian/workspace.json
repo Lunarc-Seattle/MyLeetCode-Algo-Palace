@@ -1,0 +1,194 @@
+{
+  "main": {
+    "id": "2dcc47e75181290f",
+    "type": "split",
+    "children": [
+      {
+        "id": "d48f2b48eae042a4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cde85b4366744f22",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "MyLeetCodeLibrary.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": -93,
+                  "zoom": -2.5
+                }
+              },
+              "icon": "lucide-layout-dashboard",
+              "title": "MyLeetCodeLibrary"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b8d656d5d6505b31",
+    "type": "split",
+    "children": [
+      {
+        "id": "8ef11b559c565c32",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba58cf0eb51c090f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "7a41280d44d7ccea",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "44fca5c21a4d9cce",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5d21ec6a95e427f2",
+    "type": "split",
+    "children": [
+      {
+        "id": "eb54336d4f07e694",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "92f14cefd788dbb6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "MyLeetCodeLibrary.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "MyLeetCodeLibrary 的反向链接列表"
+            }
+          },
+          {
+            "id": "803d2f6a23a7a84a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "MyLeetCodeLibrary.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "MyLeetCodeLibrary 的出链列表"
+            }
+          },
+          {
+            "id": "d14e79c2003873d9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "56ed0900858258a0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "65f5a947b74f35c3",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "MyLeetCodeLibrary.canvas",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "MyLeetCodeLibrary 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false
+    }
+  },
+  "active": "cde85b4366744f22",
+  "lastOpenFiles": [
+    "MyLeetCodeLibrary.canvas",
+    "未命名.canvas"
+  ]
+}
