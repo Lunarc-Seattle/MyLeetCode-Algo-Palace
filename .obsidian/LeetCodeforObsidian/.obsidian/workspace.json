@@ -1,27 +1,57 @@
 {
   "main": {
-    "id": "86262a5ee11b7ce8",
+    "id": "2704885685f6f899",
     "type": "split",
     "children": [
       {
-        "id": "99ea81a5fad89b89",
+        "id": "b2ef63051df0fe8a",
         "type": "tabs",
+        "dimension": 65.75342465753424,
         "children": [
           {
-            "id": "a7b2c527a7c5deae",
+            "id": "e2d366dd257c45dd",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "未命名.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
+                "file": "week1.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-layout-dashboard",
-              "title": "未命名"
+              "icon": "lucide-file",
+              "title": "week1"
+            }
+          },
+          {
+            "id": "570df466ed9b2589",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "week1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "week1"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "b5db66c4b54b42f5",
+        "type": "tabs",
+        "dimension": 34.24657534246575,
+        "children": [
+          {
+            "id": "4d248468adc32761",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
         ]
@@ -30,15 +60,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "8e2e33de00c3082d",
+    "id": "537f9d68eec7d501",
     "type": "split",
     "children": [
       {
-        "id": "c160ab6630cfc2d2",
+        "id": "a5b5e2eefab19c5c",
         "type": "tabs",
         "children": [
           {
-            "id": "c12f9a777af50d2d",
+            "id": "96ee33e0e6e1df8c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -51,7 +81,7 @@
             }
           },
           {
-            "id": "a282f6c4188a7dc2",
+            "id": "34f96c7be1a4113a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -68,7 +98,7 @@
             }
           },
           {
-            "id": "e439b1a32c6a26f8",
+            "id": "0dd470eba82cac99",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,23 +111,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
-    "id": "ee55cab22155a425",
+    "id": "558b8e7ebadde76a",
     "type": "split",
     "children": [
       {
-        "id": "0690664841e63141",
+        "id": "57faade796643592",
         "type": "tabs",
         "children": [
           {
-            "id": "dbd9494f0b9efad1",
+            "id": "ed3bcf1b390da6d6",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "未命名.canvas",
+                "file": "未命名 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,25 +137,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "未命名 的反向链接列表"
+              "title": "未命名 1 的反向链接列表"
             }
           },
           {
-            "id": "e9db731ebea7ebd9",
+            "id": "1111422530f6846e",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "未命名.canvas",
+                "file": "未命名 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "未命名 的出链列表"
+              "title": "未命名 1 的出链列表"
             }
           },
           {
-            "id": "6c1d3c42a6024e05",
+            "id": "36e5955aec0c9c43",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -140,7 +170,7 @@
             }
           },
           {
-            "id": "96f40af3b087c5d1",
+            "id": "0112c73ff6a2f754",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -154,18 +184,18 @@
             }
           },
           {
-            "id": "65fb34bb1dca6101",
+            "id": "9b138e598543cfd2",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "未命名.canvas",
+                "file": "未命名 1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "未命名 的大纲"
+              "title": "未命名 1 的大纲"
             }
           }
         ]
@@ -177,17 +207,34 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a7b2c527a7c5deae",
+  "active": "570df466ed9b2589",
   "lastOpenFiles": [
-    "MyLeetCodeLibrary.canvas"
+    "pic/未命名 1.base",
+    "pic/未命名.base",
+    "pic/未命名 1.md",
+    "week1.md",
+    "pic/欢迎.md",
+    "pic/Pasted image 20260122184713.png",
+    "pic/Pasted image 20260122200352.png",
+    "pic/Pasted image 20260122200313.png",
+    "pic/Pasted image 20260122200309.png",
+    "pic/Pasted image 20260122200304.png",
+    "pic/Pasted image 20260122200201.png",
+    "notes/纲领.md",
+    "pic/Pasted image 20260120185635.png",
+    "pic/Pasted image 20260120195249.png",
+    "pic",
+    "pic/Pasted image 20260120195819.png",
+    "notes"
   ]
 }
