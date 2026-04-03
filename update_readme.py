@@ -34,7 +34,7 @@ def fetch_leetcode_data(username):
     return None
 
 def main():
-    username = "Lunarc-Seattle" 
+    username = "JietheBig" 
     user_info = fetch_leetcode_data(username)
     
     if not user_info:
