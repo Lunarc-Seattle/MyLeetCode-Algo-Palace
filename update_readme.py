@@ -1,6 +1,7 @@
 import requests
 import json
 import sys
+import re
 
 def fetch_leetcode_data(username):
     url = "https://leetcode.com/graphql"
@@ -26,30 +27,41 @@ def fetch_leetcode_data(username):
     payload = {"query": query, "variables": {"username": username}}
 
     try:
+        print(f"正在抓取真实用户数据: {username} ...")
         response = requests.post(url, json=payload, headers=headers, timeout=15)
+        
         if response.status_code == 200:
-            return response.json().get("data", {}).get("matchedUser")
+            data = response.json()
+            user_info = data.get("data", {}).get("matchedUser")
+            if user_info:
+                print("✅ 身份确认成功，正在同步数据...")
+                return user_info
+            else:
+                print(f"❌ 错误：在 LeetCode(US) 库中未找到 ID 为 '{username}' 的用户。")
+                print(f"API 返回内容: {json.dumps(data)}")
+        else:
+            print(f"❌ 网络请求失败，状态码: {response.status_code}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"❌ 发生异常: {e}")
     return None
 
 def main():
-    username = "JietheBig" 
+    # 修正后的唯一 ID
+    username = "jiefia" 
     user_info = fetch_leetcode_data(username)
     
     if not user_info:
-        print("未能获取数据，脚本终止执行。")
+        print("数据同步失败，脚本已安全退出。")
         sys.exit(1)
 
-    # 生成 Markdown 内容
+    # 1. 语言统计
     md_content = "\n### 💻 编程语言统计\n"
     langs = user_info.get("languageProblemCount", [])
     if langs:
         for lang in langs:
             md_content += f"* **{lang['languageName']}**: {lang['problemsSolved']} 题\n"
-    else:
-        md_content += "* 暂无数据\n"
-        
+            
+    # 2. 题型标签统计
     md_content += "\n### 🧩 刷题类型统计\n"
     tags_data = user_info.get("tagProblemCounts", {})
     all_tags = []
@@ -59,35 +71,28 @@ def main():
             
     if all_tags:
         all_tags.sort(key=lambda x: x['problemsSolved'], reverse=True)
+        # 展示前 15 类，涵盖你的主要刷题领域
         for skill in all_tags[:15]: 
             md_content += f"* **{skill['tagName']}**: {skill['problemsSolved']} 题\n"
-    else:
-        md_content += "* 暂无数据\n"
 
-    # 【终极防重复写入逻辑：一刀切】
+    # 3. 写入文件（防套娃逻辑）
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
     start_marker = ""
     end_marker = ""
-
-    # 找第一个开始标志
     start_idx = content.find(start_marker)
-    # 找最后一个结束标志 (即使中间套娃了无数个，也全被包围在内)
     end_idx = content.rfind(end_marker)
 
     if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
-        # 截取头部和尾部，中间全部塞入最新的、唯一的数据
         before_content = content[:start_idx + len(start_marker)]
         after_content = content[end_idx:]
-        
         new_content = before_content + "\n" + md_content + "\n" + after_content
-        
         with open("README.md", "w", encoding="utf-8") as f:
             f.write(new_content)
-        print("✅ README.md 更新成功（已彻底清除历史嵌套垃圾）！")
+        print(f"🎉 任务完成！{username} 的战绩已更新至主页。")
     else:
-        print("❌ 错误：在 README.md 中找不到对应的隐藏标签。")
+        print("❌ README 标记丢失，请检查是否包含 ")
 
 if __name__ == "__main__":
     main()
