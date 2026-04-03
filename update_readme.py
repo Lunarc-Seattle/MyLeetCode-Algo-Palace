@@ -7,7 +7,7 @@ def fetch_leetcode_data(username):
     url = "https://leetcode.com/graphql"
     payload = {
         "query": "query userProfile($username: String!) { matchedUser(username: $username) { languageProblemCount { languageName problemsSolved } skillTags { name problemsSolved } } }",
-        "variables": {"username": Lunarc-Seattle}
+        "variables": {"username": "Lunarc-Seattle"}
     }
     headers = {"Content-Type": "application/json"}
     
