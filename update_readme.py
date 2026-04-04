@@ -3,6 +3,13 @@ import json
 import sys
 import re
 
+def generate_bar(count, max_count, total_bar_length=25):
+    """根据数量生成比例进度条"""
+    if max_count == 0: return ""
+    filled_length = int(total_bar_length * count // max_count)
+    bar = '█' * filled_length
+    return bar
+
 def fetch_leetcode_data(username):
     url = "https://leetcode.com/graphql"
     headers = {
@@ -61,7 +68,7 @@ def main():
         for lang in langs:
             md_content += f"* **{lang['languageName']}**: {lang['problemsSolved']} 题\n"
             
-    # 2. 题型标签统计
+    # 2. 题型标签统计 (加入酷炫进度条)
     md_content += "\n### 🧩 刷题类型统计\n"
     tags_data = user_info.get("tagProblemCounts", {})
     all_tags = []
@@ -71,14 +78,24 @@ def main():
             
     if all_tags:
         all_tags.sort(key=lambda x: x['problemsSolved'], reverse=True)
-        # 展示前 15 类，涵盖你的主要刷题领域
+        max_problems = all_tags[0]['problemsSolved'] # 获取最大值作为满格基准
+        
+        md_content += "\n```text\n"
+        # 展示前 15 类，涵盖主要刷题领域
         for skill in all_tags[:15]: 
-            md_content += f"* **{skill['tagName']}**: {skill['problemsSolved']} 题\n"
+            tag_name = skill['tagName']
+            count = skill['problemsSolved']
+            bar = generate_bar(count, max_problems, total_bar_length=25)
+            # 左对齐标签名（占16个字符），然后是进度条，最后是题目数量
+            md_content += f"{tag_name:<16} {bar} {count}\n"
+        md_content += "```\n"
+        md_content += "\n*(Keep climbing!)*\n"
 
     # 3. 写入文件（防套娃逻辑）
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
+    # 恢复了被清空的标记
     start_marker = ""
     end_marker = ""
     start_idx = content.find(start_marker)
@@ -92,7 +109,7 @@ def main():
             f.write(new_content)
         print(f"🎉 任务完成！{username} 的战绩已更新至主页。")
     else:
-        print("❌ README 标记丢失，请检查是否包含 ")
+        print("❌ README 标记丢失，请检查是否包含 和 ")
 
 if __name__ == "__main__":
     main()
