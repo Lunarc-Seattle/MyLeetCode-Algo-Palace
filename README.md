@@ -1,10 +1,13 @@
 
 
-### 💻 编程语言统计
-* **Java**: 10 题
-* **Python**: 9 题
-* **MySQL**: 1 题
-* **Python3**: 82 题
+### 📊 编程语言分布
+
+| 语言 | 题数 | 熟练度 |
+| :--- | :--- | :--- |
+| **Python3** | 82 | ⭐⭐⭐⭐⭐ |
+| **Java** | 10 | ⭐⭐ |
+| **Python** | 9 | ⭐⭐ |
+| **MySQL** | 1 | 🏗️ 施工中 |
 
 ### 🧩 刷题类型统计
 
@@ -26,5 +29,5 @@ Divide and Conquer ██ 6
 Greedy           ██ 6
 ```
 
-*(Keep climbing!)*
+*(And others... keep climbing!)*
 
