@@ -1,5 +1,4 @@
-# My LeetCode Journey 🚀
-[![Update LeetCode Stats](https://github.com/jiefia/MyLeetCodeNote/actions/workflows/update.yml/badge.svg)](https://github.com/jiefia/MyLeetCodeNote/actions/workflows/update.yml)
+
 
 ### 💻 编程语言统计
 * **Java**: 10 题
