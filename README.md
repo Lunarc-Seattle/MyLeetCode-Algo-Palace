@@ -1,33 +1,41 @@
 
 
+### 📈 题目难度分布
+
+**总计解决**: 95 题
+
+```text
+Easy   ██████████                 38 题 (40.0%)
+Medium █████████████              52 题 (54.7%)
+Hard   █                           5 题 (5.3%)
+```
+
 ### 📊 编程语言分布
 
 | 语言 | 题数 | 熟练度 |
 | :--- | :--- | :--- |
-| **Python3** | 84 | ⭐⭐⭐⭐⭐ |
+| **Python3** | 86 | ⭐⭐⭐⭐⭐ |
 | **Java** | 10 | ⭐⭐ |
 | **Python** | 9 | ⭐⭐ |
 | **MySQL** | 1 | 🏗️ 施工中 |
 
 ### 🧩 刷题类型统计
 
-```text
-Array            █████████████████████████ 58
-Hash Table       █████████ 23
-String           █████████ 23
-Two Pointers     █████████ 21
-Sorting          ██████ 14
-Binary Search    █████ 13
-Math             █████ 13
-Linked List      █████ 12
-Dynamic Programming ████ 10
-Stack            ████ 10
-Design           ███ 9
-Sliding Window   ███ 8
-Recursion        ███ 7
-Divide and Conquer ██ 6
-Greedy           ██ 6
-```
-
-*(And others... keep climbing!)*
+| 类型 | 题目数 | 进度图 |
+| :--- | :---: | :--- |
+| **Array** | 60 | ████████████████████ |
+| **Hash Table** | 24 | ████████ |
+| **String** | 23 | ███████ |
+| **Two Pointers** | 21 | ███████ |
+| **Sorting** | 14 | ████ |
+| **Binary Search** | 13 | ████ |
+| **Math** | 13 | ████ |
+| **Stack** | 12 | ████ |
+| **Linked List** | 12 | ████ |
+| **Dynamic Programming** | 10 | ███ |
+| **Design** | 9 | ███ |
+| **Sliding Window** | 8 | ██ |
+| **Recursion** | 7 | ██ |
+| **Divide and Conquer** | 6 | ██ |
+| **Greedy** | 6 | ██ |
 
