@@ -3,9 +3,10 @@ class Solution:
         heap = []
         for x,y in points:
             dist = x*x+y*y
-            heapq.heappush(heap,(dist,[x,y]))
-        
-        res = []
-        for _ in range(k):
-            res.append(heapq.heappop(heap)[1])
+            heapq.heappush(heap,(-dist,[x,y]))
+            if len(heap) > k:
+                heapq.heappop(heap)
+        res = []    
+        for dist,point in heap:
+            res.append(point)
         return res
