@@ -15,6 +15,13 @@ class Solution:
                     q.append([cnt, time+n])
             if q and q[0][1] == time:
                 heapq.heappush(maxHeap,q.popleft()[0])
+            # time += 1
+            # if not maxHeap:
+            #     time = q[0][1]   # ⭐ 跳时间
+            # else:
+            #     执行任务
+            # if q and q[0][1] == time:
+            #     放回heap
         return time
         # edge case： [a,a,a]
         # 就会有maxHeap是空的 就会if not maxHeap:
