@@ -1,6 +1,10 @@
 
 
 ### 📈 题目难度分布
+> [!TIP]
+> **精简笔记：** 我将每道题的解题思路、避坑指南和复杂度分析都写在了对应代码文件的注释里。
+> I have documented detailed logic, error analysis, and optimizations directly within the comments of each solution file.
+> *Detailed insights and problem-solving notes are integrated within the comments of each solution.*
 
 **总计解决**: 112 题
 
