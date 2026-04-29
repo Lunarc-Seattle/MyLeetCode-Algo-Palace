@@ -135,7 +135,7 @@ def main():
     # 确保正则替换逻辑只针对这两个标记之间
     new_readme = re.sub(
     f"{start_marker}.*?{end_marker}", 
-    f"{start_marker}\n{new_table}\n{end_marker}", 
+    f"{start_marker}\n{md_content}\n{end_marker}", 
     content, 
     flags=re.DOTALL
 )
