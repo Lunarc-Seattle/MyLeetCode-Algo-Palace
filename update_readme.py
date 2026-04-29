@@ -1,6 +1,7 @@
 import requests
 import json
-import sys
+import sys 
+import re
 
 def generate_bar(count, max_count, total_bar_length=25):
     """根据数量生成比例进度条"""
