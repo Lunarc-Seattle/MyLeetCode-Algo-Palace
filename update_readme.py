@@ -1,7 +1,7 @@
 import requests
 import json
 import sys 
-import re
+
 
 def generate_bar(count, max_count, total_bar_length=25):
     """根据数量生成比例进度条"""
@@ -130,15 +130,10 @@ def main():
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    start_marker = ""
-    end_marker = ""
+    start_marker = "<!-- START -->"
+    end_marker = "<!-- END -->"
     # 确保正则替换逻辑只针对这两个标记之间
-    new_readme = re.sub(
-    f"{start_marker}.*?{end_marker}", 
-    f"{start_marker}\n{md_content}\n{end_marker}", 
-    content, 
-    flags=re.DOTALL
-)
+
     start_idx = content.find(start_marker)
     end_idx = content.rfind(end_marker)
 
