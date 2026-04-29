@@ -1,24 +1,20 @@
 
 
 ### 📈 题目难度分布
-> [!TIP]
-> **精简笔记：** 我将每道题的解题思路、避坑指南和复杂度分析都写在了对应代码文件的注释里。<br>
-> I have documented detailed logic, error analysis, and optimizations directly within the comments of each solution file.<br>
-> *Detailed insights and problem-solving notes are integrated within the comments of each solution.*<br>
 
-**总计解决**: 112 题
+**总计解决**: 115 题
 
 ```text
-Easy   ████████                   40 题 (35.7%)
-Medium ██████████████             65 题 (58.0%)
-Hard   █                           7 题 (6.2%)
+Easy   ████████                   40 题 (34.8%)
+Medium ██████████████             68 题 (59.1%)
+Hard   █                           7 题 (6.1%)
 ```
 
 ### 📊 编程语言分布
 
 | 语言 | 题数 | 熟练度 |
 | :--- | :--- | :--- |
-| **Python3** | 103 | ⭐⭐⭐⭐⭐ |
+| **Python3** | 106 | ⭐⭐⭐⭐⭐ |
 | **Java** | 10 | ⭐⭐ |
 | **Python** | 9 | ⭐⭐ |
 | **MySQL** | 1 | 🏗️ 施工中 |
@@ -29,13 +25,13 @@ Hard   █                           7 题 (6.2%)
 | :--- | :---: | :--- |
 | **Array** | 72 | ████████████████████ |
 | **Hash Table** | 27 | ███████ |
-| **String** | 25 | ██████ |
+| **String** | 27 | ███████ |
 | **Two Pointers** | 23 | ██████ |
+| **Dynamic Programming** | 19 | █████ |
 | **Sorting** | 18 | █████ |
-| **Dynamic Programming** | 16 | ████ |
 | **Stack** | 16 | ████ |
 | **Binary Search** | 15 | ████ |
-| **Math** | 14 | ███ |
+| **Math** | 15 | ████ |
 | **Linked List** | 14 | ███ |
 | **Design** | 13 | ███ |
 | **Monotonic Stack** | 8 | ██ |
