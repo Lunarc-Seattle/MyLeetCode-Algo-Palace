@@ -15,7 +15,7 @@ def get_proficiency(count):
     elif count >= 30: return "⭐⭐⭐⭐"
     elif count >= 15: return "⭐⭐⭐"
     elif count >= 5: return "⭐⭐"
-    else: return "🏗️ 施工中"
+    else: return " ⭐ "
 
 def fetch_leetcode_data(username):
     url = "https://leetcode.com/graphql"
