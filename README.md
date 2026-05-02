@@ -50,8 +50,45 @@ Rather than only collecting accepted solutions, I focus on:
 
 <!-- START -->
 
-### 📈 Live LeetCode Stats
+### 📈 题目难度分布 | Live Stats
 
-Stats are automatically updated by GitHub Actions.
+**LeetCode 官方解决数**: 122 题
+
+**GitHub Repo 已同步题目数**: 122 题
+
+```text
+Easy   ████████                   40 题 (32.8%)
+Medium ██████████████             72 题 (59.0%)
+Hard   ██                         10 题 (8.2%)
+```
+
+### 📊 编程语言分布
+
+| 语言 | 题数 | 熟练度 |
+| :--- | :---: | :--- |
+| **Python3** | 113 | ⭐⭐⭐⭐⭐ |
+| **Java** | 10 | ⭐⭐ |
+| **Python** | 9 | ⭐⭐ |
+| **MySQL** | 1 | ⭐ |
+
+### 🧩 刷题类型统计
+
+| 类型 | 题目数 | 进度图 |
+| :--- | :---: | :--- |
+| **Array** | 76 | ████████████████████ |
+| **String** | 30 | ███████ |
+| **Hash Table** | 27 | ███████ |
+| **Dynamic Programming** | 26 | ██████ |
+| **Two Pointers** | 23 | ██████ |
+| **Sorting** | 18 | ████ |
+| **Stack** | 16 | ████ |
+| **Binary Search** | 15 | ███ |
+| **Math** | 15 | ███ |
+| **Linked List** | 14 | ███ |
+| **Design** | 13 | ███ |
+| **Monotonic Stack** | 8 | ██ |
+| **Sliding Window** | 8 | ██ |
+| **Divide and Conquer** | 7 | █ |
+| **Greedy** | 7 | █ |
 
 <!-- END -->
