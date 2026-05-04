@@ -54,7 +54,7 @@ Rather than only collecting accepted solutions, I focus on:
 
 **LeetCode 官方解决数**: 124 题
 
-**GitHub Repo 已同步题目数**: 122 题
+**GitHub Repo 已同步题目数**: 124 题
 
 ```text
 Easy   ████████                   40 题 (32.3%)
