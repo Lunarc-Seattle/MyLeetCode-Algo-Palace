@@ -52,21 +52,21 @@ Rather than only collecting accepted solutions, I focus on:
 
 ### 📈 题目难度分布 | Live Stats
 
-**LeetCode 官方解决数**: 122 题
+**LeetCode 官方解决数**: 124 题
 
 **GitHub Repo 已同步题目数**: 122 题
 
 ```text
-Easy   ████████                   40 题 (32.8%)
-Medium ██████████████             72 题 (59.0%)
-Hard   ██                         10 题 (8.2%)
+Easy   ████████                   40 题 (32.3%)
+Medium ██████████████             73 题 (58.9%)
+Hard   ██                         11 题 (8.9%)
 ```
 
 ### 📊 编程语言分布
 
 | 语言 | 题数 | 熟练度 |
 | :--- | :---: | :--- |
-| **Python3** | 113 | ⭐⭐⭐⭐⭐ |
+| **Python3** | 115 | ⭐⭐⭐⭐⭐ |
 | **Java** | 10 | ⭐⭐ |
 | **Python** | 9 | ⭐⭐ |
 | **MySQL** | 1 | ⭐ |
@@ -75,11 +75,11 @@ Hard   ██                         10 题 (8.2%)
 
 | 类型 | 题目数 | 进度图 |
 | :--- | :---: | :--- |
-| **Array** | 76 | ████████████████████ |
-| **String** | 30 | ███████ |
+| **Array** | 77 | ████████████████████ |
+| **String** | 31 | ████████ |
+| **Dynamic Programming** | 27 | ███████ |
 | **Hash Table** | 27 | ███████ |
-| **Dynamic Programming** | 26 | ██████ |
-| **Two Pointers** | 23 | ██████ |
+| **Two Pointers** | 23 | █████ |
 | **Sorting** | 18 | ████ |
 | **Stack** | 16 | ████ |
 | **Binary Search** | 15 | ███ |
@@ -87,8 +87,8 @@ Hard   ██                         10 题 (8.2%)
 | **Linked List** | 14 | ███ |
 | **Design** | 13 | ███ |
 | **Monotonic Stack** | 8 | ██ |
+| **Recursion** | 8 | ██ |
 | **Sliding Window** | 8 | ██ |
 | **Divide and Conquer** | 7 | █ |
-| **Greedy** | 7 | █ |
 
 <!-- END -->
