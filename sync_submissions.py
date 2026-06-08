@@ -80,6 +80,10 @@ def fetch_all_accepted(session):
                                            "variables": variables}, timeout=20)
             resp.raise_for_status()
             data = resp.json()
+        except requests.exceptions.HTTPError as e:
+            print(f"❌ 请求失败: {e}")
+            print(f"Response body: {resp.text[:500]}")
+            sys.exit(1)
         except Exception as e:
             print(f"❌ 请求失败: {e}")
             sys.exit(1)
