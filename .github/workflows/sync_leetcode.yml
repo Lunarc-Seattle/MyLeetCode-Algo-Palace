@@ -9,12 +9,27 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Sync accepted LeetCode submissions
-        uses: lootek/leetcode-sync@v2.0.0
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
         with:
-          github-token: ${{ github.token }}
-          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
-          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          destination-folder: action-sync
-          verbose: true
-          commit-header: "[LeetCode Sync]"
+          python-version: '3.12'
+
+      - name: 安装依赖
+        run: pip install requests
+
+      - name: 同步 LeetCode 题目
+        env:
+          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
+          LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+        run: python sync_submissions.py
+
+      - name: 提交并推送
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add action-sync/
+          git commit -m "[LeetCode Sync] Auto-sync submissions" || exit 0
+          git push
