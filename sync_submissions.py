@@ -1,14 +1,13 @@
 import requests
 import sys
 import os
-import re
 import time
 from pathlib import Path
 
 # ── 配置 ──────────────────────────────────────────────────────────────────────
 SYNC_FOLDER = "action-sync"
 
-LEETCODE_SESSION   = os.environ.get("LEETCODE_SESSION", "")
+LEETCODE_SESSION    = os.environ.get("LEETCODE_SESSION", "")
 LEETCODE_CSRF_TOKEN = os.environ.get("LEETCODE_CSRF_TOKEN", "")
 
 LANG_EXT = {
@@ -41,12 +40,12 @@ def make_session():
         "Origin":       "https://leetcode.com",
         "x-csrftoken":  LEETCODE_CSRF_TOKEN,
     })
-    s.cookies.set("LEETCODE_SESSION",  LEETCODE_SESSION,   domain="leetcode.com")
+    s.cookies.set("LEETCODE_SESSION",  LEETCODE_SESSION,    domain="leetcode.com")
     s.cookies.set("csrftoken",         LEETCODE_CSRF_TOKEN, domain="leetcode.com")
     return s
 
 
-# ── 拉取 submissions（分页） ──────────────────────────────────────────────────
+# ── 拉取 submissions（分页，不含代码） ────────────────────────────────────────
 SUBMISSION_LIST_QUERY = """
 query submissionList($offset: Int!, $limit: Int!, $lastKey: String) {
   submissionList(offset: $offset, limit: $limit, lastKey: $lastKey) {
@@ -59,16 +58,24 @@ query submissionList($offset: Int!, $limit: Int!, $lastKey: String) {
       lang
       statusDisplay
       timestamp
-      code
     }
   }
 }
 """
 
+# ── 单独拉某条 submission 的代码 ──────────────────────────────────────────────
+SUBMISSION_DETAIL_QUERY = """
+query submissionDetails($submissionId: Int!) {
+  submissionDetails(submissionId: $submissionId) {
+    code
+  }
+}
+"""
+
 def fetch_all_accepted(session):
-    """返回 {titleSlug: submission_dict} 每题只保留最新 AC"""
-    url     = "https://leetcode.com/graphql"
-    best    = {}          # titleSlug -> submission
+    """返回 {titleSlug: submission_dict}，每题只保留最新 AC（不含代码）"""
+    url      = "https://leetcode.com/graphql"
+    best     = {}
     last_key = None
     offset   = 0
     limit    = 20
@@ -92,14 +99,13 @@ def fetch_all_accepted(session):
             print(f"❌ GraphQL 错误: {data['errors']}")
             sys.exit(1)
 
-        sl = data["data"]["submissionList"]
+        sl          = data["data"]["submissionList"]
         submissions = sl.get("submissions") or []
 
         for sub in submissions:
             if sub["statusDisplay"] != "Accepted":
                 continue
             slug = sub["titleSlug"]
-            # 只保留 timestamp 最大（最新）的一条
             if slug not in best or int(sub["timestamp"]) > int(best[slug]["timestamp"]):
                 best[slug] = sub
 
@@ -108,10 +114,26 @@ def fetch_all_accepted(session):
 
         last_key = sl.get("lastKey")
         offset  += limit
-        time.sleep(0.3)   # 避免频率过高
+        time.sleep(0.3)
 
     print(f"✅ 共获取到 {len(best)} 道已 AC 题目")
     return best
+
+
+def fetch_submission_code(session, submission_id):
+    """单独拉一条 submission 的源代码"""
+    url = "https://leetcode.com/graphql"
+    try:
+        resp = session.post(url, json={
+            "query": SUBMISSION_DETAIL_QUERY,
+            "variables": {"submissionId": int(submission_id)}
+        }, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        return data["data"]["submissionDetails"]["code"]
+    except Exception as e:
+        print(f"  ⚠️  获取代码失败 (id={submission_id}): {e}")
+        return ""
 
 
 # ── 拉取题目元数据（题号） ────────────────────────────────────────────────────
@@ -141,20 +163,17 @@ def fetch_question_meta(session, title_slug):
 
 # ── 文件名工具 ────────────────────────────────────────────────────────────────
 def slug_to_folder_name(frontend_id, title_slug):
-    """e.g. 0001-two-sum"""
     num = str(frontend_id).zfill(4)
     return f"{num}-{title_slug}"
 
 
 def get_existing_slugs(sync_folder):
-    """返回已同步的 titleSlug 集合（从文件夹名解析）"""
     folder = Path(sync_folder)
     if not folder.exists():
         return set()
     existing = set()
     for item in folder.iterdir():
         if item.is_dir():
-            # 格式: 0001-two-sum  → two-sum
             parts = item.name.split("-", 1)
             if len(parts) == 2 and parts[0].isdigit():
                 existing.add(parts[1])
@@ -168,26 +187,24 @@ def write_submission(sync_folder, folder_name, sub, meta):
 
     lang     = sub["lang"].lower()
     ext      = LANG_EXT.get(lang, "txt")
-    filename = f"solution.{ext}"
-    filepath = target / filename
+    filepath = target / f"solution.{ext}"
 
-    # 文件头注释
     header_lines = [
-        f"# {meta['questionFrontendId']}. {meta['title']}",
-        f"# Difficulty: {meta['difficulty']}",
-        f"# https://leetcode.com/problems/{meta['titleSlug']}/",
+        f"{meta['questionFrontendId']}. {meta['title']}",
+        f"Difficulty: {meta['difficulty']}",
+        f"https://leetcode.com/problems/{meta['titleSlug']}/",
         "",
     ]
     if ext in ("py", "sh"):
-        header = "\n".join(f"# {l}" if l else "" for l in header_lines)
+        header = "\n".join(f"# {l}" if l else "#" for l in header_lines) + "\n\n"
     elif ext in ("sql",):
-        header = "\n".join(f"-- {l}" if l else "" for l in header_lines)
+        header = "\n".join(f"-- {l}" if l else "--" for l in header_lines) + "\n\n"
     else:
-        header = "/*\n" + "\n".join(f" * {l}" if l else " *" for l in header_lines) + "\n */\n"
+        header = "/*\n" + "\n".join(f" * {l}" if l else " *" for l in header_lines) + " */\n\n"
 
     code = sub.get("code", "")
-    filepath.write_text(header + "\n" + code, encoding="utf-8")
-    print(f"  ✍️  写入: {folder_name}/{filename}")
+    filepath.write_text(header + code, encoding="utf-8")
+    print(f"  ✍️  写入: {folder_name}/solution.{ext}")
 
 
 # ── 主流程 ────────────────────────────────────────────────────────────────────
@@ -197,7 +214,7 @@ def main():
         sys.exit(1)
 
     session  = make_session()
-    accepted = fetch_all_accepted(session)   # {slug: sub}
+    accepted = fetch_all_accepted(session)
     existing = get_existing_slugs(SYNC_FOLDER)
 
     new_slugs = set(accepted.keys()) - existing
@@ -214,8 +231,12 @@ def main():
             print(f"  ⚠️  跳过 {slug}（无法获取题号）")
             continue
 
+        # 单独拉代码
+        print(f"[{i}/{len(new_slugs)}] 拉取代码: {slug}")
+        sub["code"] = fetch_submission_code(session, sub["id"])
+        time.sleep(0.2)
+
         folder_name = slug_to_folder_name(meta["questionFrontendId"], slug)
-        print(f"[{i}/{len(new_slugs)}] {folder_name}")
         write_submission(SYNC_FOLDER, folder_name, sub, meta)
         time.sleep(0.2)
 
